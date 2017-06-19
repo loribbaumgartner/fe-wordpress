@@ -1,21 +1,100 @@
+@import "_colors";
+
+// $ltcyan
+// $eggblue
+// $dkblue
+// $salmon
+// $ruby
+// $plum
+
 body {
-  background: #295618;
-  color: #FFF;
+  color: $plum;
   font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', sans-serif;
 }
 
-#root {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "header header header"
+    ". center ."
+    ". action ."
+    "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+}
+
+.content {
+  grid-area: center;
+}
+
+.action {
+  grid-area: action;
+  justify-self: center;
+}
+
+.footer {
+  grid-area: footer;
 }
 
 h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   font-weight: 200;
   font-size: 1.5rem;
+  color: $salmon;
+}
+
+input {
+  color: $plum;
+  min-height: 25px;
+  padding: 0 2px;
+  margin: 10px;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid $ruby;
+  outline: none;
+  min-width: 80%;
+  margin-left: 10%;
+}
+
+input:focus {
+  border-bottom: 2px solid $salmon;
+  transition-property: border-color;
+  transition-duration: 0.5s;
+}
+
+input[type=submit] {
+  border-radius: 50px;
+  padding: 2px 15px;
+  text-transform: uppercase;
+  background: $eggblue;
+  color: $dkblue;
+  border: none;
+  min-width: 30%;
+  margin-left: 35%;
+  height: 15px;
+}
+
+input[type=submit]:hover, input[type=submit]:focus {
+  background: $ltcyan;
+  color: $dkblue;
+  transform: translate(1px, -1px);
+  transition: background 0.3s;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: lighten($ruby, 10%);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: lighten($ruby, 10%);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: lighten($ruby, 10%);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: lighten($ruby, 10%);
 }
